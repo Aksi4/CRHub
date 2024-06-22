@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% block title %}Post{% endblock %}
+{% block content %}
+
+<div class="container mt-5 ">
+    <div class="d-flex flex-row align-items-start mt-3 p-3">
+        <div>
+            
+            <img src="{{ url_for('static', filename='post_pics/' + post.image_file) }}" class="img-fluid rounded-1" style="max-width: 30em; min-width: 48em; width: 100%;" alt="Post Image">
+        </div>
+<div class="d-flex flex-column justify-content-between p-3 flex-grow-1">
+        <div class="justify-content-between">
+            <h1 class="display-6 fw-bold">{{post.title}}</h1>
+            <hr class="my-3">
+            <h5>{{ post.type }} region</h5>
+            
+            <h3 class="mt-3">Сontacts </h3>
+            <p class="blockquote">{{ post.contacts }}</p>
+
+
+
+        </div>
+</div>
+    </div>
+    <p class="lead text-black">{{ post.text }} </p>
+
+
+
+            <p>Updated in: {{ post.created }}</p>
+
+            {% if current_user.is_authenticated and post.user_id == current_user.id %}
+            <a href="{{ url_for('.update_post', id=post.id) }}" class="align-self-baseline btn btn-primary">Edit</a>
+        {% endif %}
+
+    
+        <div class="mt-5">
+        
+        <div id="map"></div>
+
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script>
+            var map = L.map('map').setView([{{ post.latitude }}, {{ post.longitude }}], 11);
+    
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        var marker = L.marker([{{ post.latitude }}, {{ post.longitude }}]).addTo(map)
+            .bindPopup("<b>Location</b><br>Coordinates: {{ post.latitude }}, {{ post.longitude }}");
+    </script>
+    </div>
+
+
+    
+
+    <div class="row">
+        <div class="col-md-10 mt-5">
+            <h3 class="mb-3">Reviews</h3>
+        </div>
+        <div class="col-md-2 mt-4">
+            <a href="#" id="show-review-form" class="btn btn-primary mt-3 mb-5">LEAVE A REVIEW</a>
+          </div>
+
+          <script>
+            document.getElementById('show-review-form').addEventListener('click', function(event) {
+                event.preventDefault();
+                document.getElementById('review-form').style.display = 'block';
+            });
+        </script>
+
+        <div id="review-form" style="display: none;">
+
+            <div class="row g-0">
+                <div class="col">
+                    <div class="p-3">
+                        <h4>Leave a Review</h4>
+                        <form method="POST">
+                            {{ form.hidden_tag() }}
+                            <input type="hidden" name="post_id" value="{{ post.id }}">
+                            <div class="mb-3">
+                                {{ form.message.label(class="form-label mt-4") }}
+                                {{ form.message(class="form-control", placeholder="Enter message") }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.submit(class="btn btn-primary mt-3 mb-5") }}
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    <div class="row">
+      <div class="col-md-3 mt-3">
+        <h5>UserName</h5>
+        <ul class="list-group mt-3 ">
+          {% for review in reviews %}
+            <li class="list-group-item ">{{ review.username }}</li>
+            <hr class="my-4">
+          {% endfor %}
+        </ul>
+      </div>
+    
+      <div class="col-md-9 mt-3">
+        <h5>Messages</h5>
+        <div class="list-group mt-3 ">
+          {% for review in reviews %}
+            <li class="list-group-item ">{{ review.message }}</li>
+            <hr class="my-4">
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    
+
+</div>
+</div>
+{% include "footer.html" %}
+{% endblock %}

@@ -1,0 +1,75 @@
+.rounded-image {
+  border-radius: 6%;
+  width: 100%;
+  opacity: 0.9;
+}
+
+
+    .flash-messages {
+        display: flex;
+        flex-direction: column-reverse; /* Відображати блоки в зворотньому порядку */
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        margin: 10px;
+        z-index: 9999;
+    }
+
+    .alert {
+        margin-bottom: 10px;
+    }
+
+    .image-container {
+        position: relative;
+        width: 100%;
+        height: 100vh; /* Full height of the viewport */
+        overflow: hidden; /* Ensure the overlay covers the entire image */
+    }
+    .full-width-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Cover the entire element area */
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(16, 21, 16, 0.5); /* Semi-transparent black */
+        z-index: 2;
+    }
+    .main-content {
+        position: relative;
+        z-index: 3;
+        color: white; /* Change text color to white for better readability */
+    }
+    .text-shadow {
+      text-shadow: 1px 5px 5px #2c2c2c; /* Adjust the values as needed */
+    }
+    .text-white1 {
+      color: #cecece; /* Приклад темного кольору, можна налаштувати */
+    }
+    .navbar {
+      background-color: rgba(75, 72, 69, 0.3); /* Полупрозорий колір */
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Тінь для затемнення */
+    }
+
+    .bg-custom {
+      background-color: #dcdfe4;
+    }
+
+    .scale-zero {
+      transform: scale(0);
+  }
+
+  .break-top {
+    display: block;
+    margin-bottom: 8em; /* або будь-який інший розмір */
+  }
+
+  #map { height: 400px; }

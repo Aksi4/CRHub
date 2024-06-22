@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block title %}Portfolio{% endblock %}
+{% set no_break_top = True %}
+{% block content %}
+
+
+<div class="content">
+    <div class="image-container d-flex justify-content-center align-items-center ">
+        <img src="{{ url_for('static', filename='images/main_image.jpg' ) }}" class="full-width-image" alt="...">
+        <div class="overlay"></div>
+        <div class="container main-content overflow-hidden text-center">
+          <div class="row gx-5">
+              <div class="col">
+                  <div class="p-3">
+                      <blockquote class="blockquote">
+                        <h1 class="display-4 fw-bold text-white1 text-shadow">Carpathian Retreats Hub</h1>
+                        <p class="text-white1">The Carpathians are probably the cleanest part of Ukraine from the human factor.</p>                          
+                      </blockquote>
+                  </div>
+              </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+      <div class="row mt-5">
+        <div class="col-md-6 mt-3 mb-5">
+          <h2 class="mb-3">Discover the Carpathians: Your perfect vacation awaits!</h2>
+          <hr class="my-4">
+          <blockquote class="blockquote">
+          <p>
+            We are pleased to welcome you to our website, where you will find the best deals for an unforgettable vacation in the Carpathians. The enchanting beauty of the Carpathian mountains, clean air and breathtaking views are waiting for you. Visit us to find the perfect place for your vacation where you can enjoy nature, tranquility and comfort.
+            Looking for a romantic getaway for two, an active adventure with friends, or a family vacation? We have everything you need. 
+            Entrust us with your vacation and we will help you create unforgettable memories of the Carpathians. Welcome to the world of adventure and relaxation!
+          </p></blockquote>
+        </div>
+        <div class="col-md-6 mt-3 d-flex justify-content-center">
+          <img src="{{ url_for('static', filename='images/main_image3.jpg' ) }}" class="img-fluid w-75 mb-5" alt="...">
+        </div>
+      </div>
+    </div> 
+    
+    <div class="alert-dismissible alert-secondary bg-primary mt-3">
+      <div class="container overflow-hidden text-center text-light"  >
+        <blockquote class="blockquote">
+          
+          <p class="mt-4 mb-0 text-white1">
+            Just think about it: endless expanses, forests, fields, mountains, one great place to relax and catch your breath - all these are the Carpathians. People who get there unite with nature, forget about themselves and just finally find peace in their lives. There are many hiking trails and specialized places to relax, so think about it when you choose a place to relax...             
+            <br><cite>your best solution is the Carpathians</cite>
+          </p>
+        </blockquote>
+      </div>
+    </div>
+
+  <div class="container mt-5">
+    <div class="row mt-5">
+      <div class="col-md-6 mt-3">
+        <img src="{{ url_for('static', filename='images/main_image2.jpg' ) }}" class="img-fluid mb-5" alt="...">
+      </div>
+      <div class="col-md-6 mt-3 mb-5">
+        <h2 class="mb-3">Briefly about the Carpathians</h2>
+        <hr class="my-4"><blockquote class="blockquote">
+        <p>
+          The Ukrainian Carpathians are part of the Eastern Carpathians mountain system in western Ukraine. They are divided into the Outer Eastern Carpathians and the Inner Eastern Carpathians. Their length from the headwaters of the Syan to the headwaters of the Suceava is 280 km and their width is over 110 km. They occupy the territory of Zakarpattia, Lviv, Ivano-Frankivsk and Chernivtsi regions. The total area of the mountain system is over 21.56 thousand km². The mountain ranges, separated by longitudinal depressions and delimited by deep transverse valleys, stretch mainly from northwest to southeast. The highest peak is Hoverla (2061 m).
+        </p></blockquote>
+      </div>
+    </div>
+  </div>
+
+
+{% block footer %}
+</div>
+{% include "footer.html" %}
+{% endblock %}
+{% endblock %}

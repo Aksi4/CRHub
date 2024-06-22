@@ -1,0 +1,27 @@
+{% if current_user.is_authenticated %}
+  {% set menu = {"Search": url_for("post_bp.list_posts"), "Account": url_for("auth_bp.account"),
+                "Users": url_for("auth_bp.users"), "Reviews": url_for("reviews_bp.reviews"), 
+                "Logout": url_for("auth_bp.logout")} %}
+{% else %}
+  {% set menu = {"Search": url_for("post_bp.list_posts"), "Users": url_for("auth_bp.users"),
+                "Reviews": url_for("reviews_bp.reviews"), "Log in": url_for("auth_bp.login"),
+                "Registration": url_for("auth_bp.register")}  %}
+{% endif %}
+
+<nav class="navbar navbar-expand-lg fixed-top {% if request.endpoint == 'main' %}navbar-transparent{% else %}bg-primary{% endif %}" data-bs-theme="dark" id="navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand ms-3" href="/main">CRHub</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto">
+        {% for name, url in menu.items() %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url }}">{{ name | upper }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</nav>
