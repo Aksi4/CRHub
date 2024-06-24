@@ -9,7 +9,7 @@
   {% if users_list %}
 <div class="row mt-5">
   <div class="col-md-3 mt-3">
-    <h5>Emails</h5>
+    <h5>Name</h5>
     <ul class="list-group mt-3 ">
       {% for user in users_list %}
         <li class="list-group-item ">{{ user.username }}</li>
@@ -18,7 +18,7 @@
     </ul>
   </div>
   <div class="col-md-5 mt-3">
-    <h5>Messages</h5>
+    <h5>Emails</h5>
     <ul class="list-group mt-3 ">
       {% for user in users_list %}
         <li class="list-group-item ">{{ user.email }}</li>
